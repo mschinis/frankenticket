@@ -1,34 +1,13 @@
-/*
- * Globals
- */
+$brand-primary: #5ed3cd;
 
-/* Links */
-a,
-a:focus,
-a:hover {
-  color: #fff;
-}
-
-/* Custom default button */
-.btn-default,
-.btn-default:hover,
-.btn-default:focus {
-  color: #333;
-  text-shadow: none; /* Prevent inheritence from `body` */
-  background-color: #fff;
-  border: 1px solid #fff;
-}
-
-
-/*
- * Base structure
- */
+@import "bootstrap";
 
 html,
 body,
 body > .ember-view{
   height: 100%;
 }
+
 body > .ember-view > #landing {
   color: #999999;
   background-color: #333;
@@ -37,8 +16,6 @@ body > .ember-view > #landing {
   text-align: center;
   text-shadow: 0 1px 3px rgba(0,0,0,.5);
 }
-
-/* Extra markup and styles for table-esque vertical and horizontal centering */
 .site-wrapper {
   display: table;
   width: 100%;
@@ -55,7 +32,6 @@ body > .ember-view > #landing {
   margin-right: auto;
   margin-left: auto;
 }
-
 /* Padding for spacing */
 .inner {
   padding: 30px;
@@ -166,17 +142,4 @@ body > .ember-view > #landing {
 }
 .typed{
   display: inline-block;
-}
-.btn-primary{
-  color: #fff;
-  background-color: #5ed3cd;
-  border-color: #4ba9a4;
-}
-.btn-primary:hover{
-  color: #fff;
-  background-color: #4ba9a4;
-  border-color: #449894;
-}
-.btn-primary:active{
-  background-color: #4ba9a4;
 }
