@@ -1,28 +1,8 @@
-<div id="landing" class="site-wrapper">
-  <div class="site-wrapper-inner">
-    <div class="cover-container">
-      <div class="inner cover">
-        <img class="cover-heading" src="./logo.png" alt="" />
-        <p class="lead">
-          <div class="row">
-            <div class="col-md-12">{{typed-js content=model.ticketTypes speed=100}}</div>
-          </div>
-        </p>
-        <p class="lead">
-          {{#link-to 'track' class="btn btn-lg btn-primary"}}Learn more{{/link-to}}
-        </p>
-      </div>
-      <div class="mastfoot">
-        <div class="inner">
-          <p>Created at BT Hackathon by <a href="https://twitter.com/marcelloseri">@marcelloseri</a>
-            <a href="https://twitter.com/mattia_asti">@mattia_asti</a>,
-            <a href="https://twitter.com/franp">@franp</a>
-            <a href="https://twitter.com/mkakkouras">@mkakkouras</a>
-            <a href="https://twitter.com/mschinis">@mschinis</a>,
-            </p>
-        </div>
-      </div>
-    </div>
+<p class="lead">
+  <div class="row">
+    <div class="col-md-12">{{typed-js content=model.ticketTypes speed=100}}</div>
   </div>
-</div>
-{{outlet}}
+</p>
+<p class="lead">
+  {{#link-to 'track' class="btn btn-lg btn-primary"}}Learn more{{/link-to}}
+</p>
