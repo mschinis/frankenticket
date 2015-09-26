@@ -5,7 +5,7 @@ export default Ember.Route.extend({
 
         return {
             showForm: false,
-            ticketTypes: ['Concert','Theater','Flight']
+            ticketTypes: ['Concert','Theater','Festival']
         }
     },
     actions: {
