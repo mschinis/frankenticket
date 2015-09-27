@@ -6,7 +6,8 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-    this.route('track');
+  this.route('track');
+  this.route('confirmation');
 });
 
 export default Router;
