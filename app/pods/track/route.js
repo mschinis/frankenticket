@@ -23,6 +23,7 @@ export default Ember.Route.extend(RequestMixin,{
     actions: {
         sendAvailabilityRequest(){
             console.log(this.get('currentModel.event'));
+            this.set('currentModel.loading',true);
             this.get('currentModel.event').availability().then((res)=>{
                 console.log('res',res, 'length', res.length);
                 // If no tickets, show confirmation

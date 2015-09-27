@@ -10,6 +10,7 @@ export default Ember.Route.extend({
     },
     actions: {
         showForm(){
+            this.set('currentModel.loading',true);
             this.toggleProperty('currentModel.showForm');
         }
     }
