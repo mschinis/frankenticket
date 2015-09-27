@@ -1,0 +1,6 @@
+<select class="form-control" id="ticketInput" name="ticketInput" {{action 'selected' on='change'}}>
+  <option value="">Select Ticket</option>
+  {{#each tickets key="name" as |ticket|}}
+      <option value="{{ticket.name}}">{{ticket.name}} - {{ticket.price}}</option>
+  {{/each}}
+</select>
