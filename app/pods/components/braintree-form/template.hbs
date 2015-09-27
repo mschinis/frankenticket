@@ -1,5 +1,7 @@
-<form id="checkout" method="post" action="/checkout">
+<form id="checkout">
   <div id="payment-form"></div>
-  <input type="submit" value="Pay £{{price}}">
+  {{#liquid-if price}}
+  <button class="btn btn-lg btn-primary" enabled={{active}}>Preorder - {{price}}</button>
+  {{/liquid-if}}
 </form>
 {{yield}}
