@@ -35,6 +35,7 @@ export default Ember.Route.extend(RequestMixin,{
             });
         },
         sendTrackRequest(method){
+            this.set('currentModel.event.ticket',this.get('currentModel.event.ticket.name'));
             this.set('currentModel.event.payment_method',method);
             this.get('currentModel.event').book().then((res)=>{
                 this.transitionTo('confirmation');
