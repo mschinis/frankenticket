@@ -1,7 +1,7 @@
 <form id="checkout">
   <div id="payment-form"></div>
-  {{#liquid-if price}}
-  <button class="btn btn-lg btn-primary" enabled={{active}}>Preorder - {{price}}</button>
+  {{#liquid-if ticket}}
+  <button class="btn btn-lg btn-primary" enabled={{active}}>Preorder{{#if ticket.price}} - £{{to-pounds ticket.price}}{{/if}}</button>
   {{/liquid-if}}
 </form>
 {{yield}}

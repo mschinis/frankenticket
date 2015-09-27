@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
     // Required input parameters
-    price: 0,
+    ticket: {},
     clientToken: '',
     action: null,
 
