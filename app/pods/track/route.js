@@ -50,13 +50,15 @@ export default Ember.Route.extend(RequestMixin,{
             //     this.set('currentModel.tickets',res);
             // });
         },
-        sendTrackRequest(){
-            Event.request().then((res)=>{
+        sendTrackRequest(method){
+            console.log('selected payment method',method);
+            // Event.request().then((res)=>{
                 // All done. show confirmation
-            });
+            // });
         },
         selectTicket(ticket){
-            console.log('ticket selected',ticket);
+            console.log('selected ticket',ticket);
+            ticket? this.set('currentModel.event.ticket',ticket) : this.set('currentModel.event.ticket',{});
         }
     }
 });

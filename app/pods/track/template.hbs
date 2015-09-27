@@ -23,20 +23,26 @@
     <div class="form-group">
       <label for="ticketInput" class="col-sm-2 control-label">Ticket</label>
       <div class="col-sm-10">
-        {{ticket-select tickets=model.tickets action='selectTicket'}}
+        <div class="col-sm-8">
+          {{ticket-select tickets=model.tickets action='selectTicket'}}
+        </div>
+        <div class="col-sm-4"></div>
+          Quantity
       </div>
     </div>
-    {{braintree-form clientToken=model.braintreeClientToken price=20}}
+    {{braintree-form clientToken=model.braintreeClientToken price=model.event.ticket.price action='sendTrackRequest'}}
   </div>
 
   {{/liquid-if}}
 
-  {{#link-to 'index' class="btn btn-lg btn-warning"}}Cancel{{/link-to}}
-  {{#if model.tickets}}
-    <button type="button" class="btn btn-lg btn-primary" {{action 'sendTrackRequest'}}>Complete</button>
-  {{else}}
-    <button type="button" class="btn btn-lg btn-primary" {{action 'sendAvailabilityRequest'}}>Submit</button>
-  {{/if}}
+  <div id="actionButtons">
+    {{#link-to 'index' class="btn btn-lg btn-warning"}}Cancel{{/link-to}}
+    {{#if model.tickets}}
+      <button type="button" class="btn btn-lg btn-primary" {{action 'sendTrackRequest'}}>Remind only</button>
+    {{else}}
+      <button type="button" class="btn btn-lg btn-primary" {{action 'sendAvailabilityRequest'}}>Submit</button>
+    {{/if}}
+  </div>
 </form>
 <script src="https://js.braintreegateway.com/v2/braintree.js"></script>
 {{outlet}}
