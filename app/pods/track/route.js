@@ -1,14 +1,24 @@
 import Ember from 'ember';
 import Event from '../event/model';
+import RequestMixin from '../../mixins/request';
 
-export default Ember.Route.extend({
+export default Ember.Route.extend(RequestMixin,{
     model(){
         let event = Event.create();
         let tickets = [];
-        return {
-            event,
-            tickets
-        }
+
+        return this.request({
+            method: 'GET',
+            url: this.apiURL(`client-token`)
+        }).then((res)=>{
+            return {
+                event,
+                tickets,
+                braintreeClientToken: res.token
+            };
+        });
+
+
     },
     actions: {
         sendAvailabilityRequest(){
@@ -44,6 +54,9 @@ export default Ember.Route.extend({
             Event.request().then((res)=>{
                 // All done. show confirmation
             });
+        },
+        selectTicket(ticket){
+            console.log('ticket selected',ticket);
         }
     }
 });

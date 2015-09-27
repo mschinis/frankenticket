@@ -18,16 +18,17 @@
     </div>
   </div>
   {{#liquid-if model.tickets}}
-  <div class="form-group">
-    <label for="ticketInput" class="col-sm-2 control-label">Event Link</label>
-    <div class="col-sm-10">
-      <select class="form-control" id="ticketInput" name="ticketInput">
-        {{#each model.tickets key="name" as |ticket|}}
-            <option value="{{ticket.name}}">{{ticket.name}} - {{ticket.price}}</option>
-        {{/each}}
-      </select>
+  <div id="order">
+    <div class="text-center"><h4>Optional - Preorder tickets</h4></div>
+    <div class="form-group">
+      <label for="ticketInput" class="col-sm-2 control-label">Ticket</label>
+      <div class="col-sm-10">
+        {{ticket-select tickets=model.tickets action='selectTicket'}}
+      </div>
     </div>
+    {{braintree-form clientToken=model.braintreeClientToken price=20}}
   </div>
+
   {{/liquid-if}}
 
   {{#link-to 'index' class="btn btn-lg btn-warning"}}Cancel{{/link-to}}
@@ -37,4 +38,5 @@
     <button type="button" class="btn btn-lg btn-primary" {{action 'sendAvailabilityRequest'}}>Submit</button>
   {{/if}}
 </form>
+<script src="https://js.braintreegateway.com/v2/braintree.js"></script>
 {{outlet}}
