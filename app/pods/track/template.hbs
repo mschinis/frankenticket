@@ -14,7 +14,7 @@
   <div class="form-group">
     <label for="eventInput" class="col-sm-2 control-label">Event Link</label>
     <div class="col-sm-10">
-      {{input type="text" id="eventInput" class="form-control" placeholder="https://....." value=model.event.link}}
+      {{input type="text" id="eventInput" class="form-control" placeholder="https://....." value=model.event.url}}
     </div>
   </div>
   {{#liquid-if model.tickets}}
@@ -30,7 +30,7 @@
           Quantity
       </div>
     </div>
-    {{braintree-form clientToken=model.braintreeClientToken price=model.event.ticket.price action='sendTrackRequest'}}
+    {{braintree-form clientToken=model.braintreeClientToken ticket=model.event.ticket action='sendTrackRequest'}}
   </div>
 
   {{/liquid-if}}

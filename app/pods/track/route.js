@@ -22,39 +22,23 @@ export default Ember.Route.extend(RequestMixin,{
     },
     actions: {
         sendAvailabilityRequest(){
-            console.log('event', this.get('currentModel.event'));
-            this.set('currentModel.tickets',[
-                {
-                    "name": "SAT 9PM 2PROV DOUBLE",
-                    "availability": false,
-                    "price": "£20.00"
-                },
-                {
-                    "name": "SUN 9PM 2PROV DOUBLE",
-                    "availability": false,
-                    "price": "£15.00"
+            console.log(this.get('currentModel.event'));
+            this.get('currentModel.event').availability().then((res)=>{
+                console.log('res',res, 'length', res.length);
+                // If no tickets, show confirmation
+                if(res.length === 0 ){
+                    this.transitionTo('confirmation');
+                    return;
                 }
-            ]);
-            // Event.availability().then((res)=>{
-            //     if(res.length === 0 ) this.transitionTo('eekke');
-            //     return;
-            //
-            //     // res is array
-            //     /*
-            //     [{
-            //         "name": "SAT 9PM 2PROV DOUBLE",
-            //         "availability": false,
-            //         "price": 0
-            //     }]
-            //     */
-            //     this.set('currentModel.tickets',res);
-            // });
+                // Tickets available, set them.
+                this.set('currentModel.tickets',res);
+            });
         },
         sendTrackRequest(method){
-            console.log('selected payment method',method);
-            // Event.request().then((res)=>{
-                // All done. show confirmation
-            // });
+            this.set('currentModel.event.payment_method',method);
+            this.get('currentModel.event').book().then((res)=>{
+                this.transitionTo('confirmation');
+            });
         },
         selectTicket(ticket){
             console.log('selected ticket',ticket);
