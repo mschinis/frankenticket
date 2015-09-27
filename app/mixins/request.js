@@ -15,9 +15,6 @@ export default Ember.Mixin.create({
                 data: params.data,
                 type: params.method,
                 contentType: 'application/json; charset=UTF-8',
-                xhrFields: {
-                    withCredentials: true
-                },
                 crossDomain: true
             })
             .success(resolve)
